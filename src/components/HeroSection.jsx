@@ -73,9 +73,7 @@ const HeroSection = () => {
             <h1 className="mt-5 font-serif text-6xl font-semibold leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
               Cameron
               <br />
-              <span className="bg-gradient-to-r from-ocean via-deep-blue to-navy bg-clip-text pr-2 italic text-transparent dark:from-sky dark:via-gold-light dark:to-sky">
-                Bennett
-              </span>
+              <span className="surname-gradient pr-2 italic">Bennett</span>
             </h1>
 
             <p className="mx-auto mt-7 max-w-lg text-base leading-relaxed text-navy/70 dark:text-cream/70 sm:text-lg lg:mx-0">
