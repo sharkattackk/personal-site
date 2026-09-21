@@ -1,102 +1,78 @@
 import { useState, useEffect } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import Monogram from "./Monogram";
 
+const downloadPdf = () => {
+  const a = document.createElement("a");
+  a.href = "/Cameron_Bennett_Resume.pdf";
+  a.download = "Cameron_Bennett_Resume.pdf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
+
+const links = [
+  { name: "On location", route: "#field" },
+  { name: "Journey", route: "#journey" },
+  { name: "About", route: "#about" },
+  { name: "CV", route: "/cv.html", external: true, download: true },
+];
 
 const NavBar = ({ toggleDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(true);
-
+  const [isDark, setIsDark] = useState(() =>
+    document.documentElement.classList.contains("dark")
+  );
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const downloadPdf = () => {
-    const a = document.createElement("a");
-    a.href = "/Cameron_Bennett_Resume.pdf";
-    a.download = "Cameron_Bennett_Resume.pdf";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  };
 
   const handleThemeToggle = () => {
     setIsDark(!isDark);
-    toggleDarkMode(); // calls parent function
+    toggleDarkMode();
   };
-
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
         isScrolled
-          ? "backdrop-blur-xl dark:bg-dark-gray/70 shadow-2xl bg-neutral-gray/70"
+          ? "border-b border-gold/30 bg-cream/85 backdrop-blur-md dark:bg-navy/85"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-20 py-4 flex items-center justify-between">
-        
-        {/* Logo */}
-        <a href="#home">
-          <div className="flex items-center space-x-3">
-            <span className="text-lg font-medium tracking-wide text-black dark:text-white hidden md:block">
-              Cameron Bennett
-            </span>
-          </div>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-20">
+        <a href="#home" className="flex items-center gap-3 text-navy dark:text-cream">
+          <Monogram size={38} />
+          <span className="hidden font-serif text-lg font-medium tracking-wide md:block">
+            Cameron Bennett
+          </span>
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-10 text-base tracking-wide text-black dark:text-white">
-          {[
-            { name: "Journey", route: "#journey" },
-            { name: "About", route: "#about" },
-            { name: "CV", route: "/cv.html", external: true, download: true },
-          ].map((item) => (
+        <nav className="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-caps text-navy/75 dark:text-cream/75 md:flex">
+          {links.map((item) => (
             <a
               key={item.name}
               href={item.route}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
               onClick={item.download ? downloadPdf : undefined}
-              className="text-dark-gray hover:text-black dark:text-light-gray dark:hover:text-white hover:opacity-70 transition cursor-pointer"
+              className="transition hover:text-gold"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
-        {/* Right Side */}
-        <div className="flex items-center space-x-6">
-          
-          {/* Day / Evening Toggle */}
-          <button
-            onClick={handleThemeToggle}
-            className="relative h-10 rounded-full bg-gray-200 dark:bg-gray-800 transition-all duration-300 flex items-center px-2"
-          >
-            {/* Sliding Circle */}
-            <div
-              className={`absolute top-1 left-2 w-[40%] h-8 rounded-full bg-white dark:bg-black shadow-md transform transition-all duration-300 ${
-                isDark ? "translate-x-7" : "translate-x-0"
-              }`}
-            />
-
-            {/* Labels */}
-            <div className="flex justify-between space-x-4 w-full text-xs font-medium px-2 z-10">
-              <span className="flex items-center w-1/2  space-x-1 text-black dark:text-gray-400">
-                <FaSun className="text-xs" />
-              </span>
-              <span className="flex items-center w-1/2 space-x-1 text-gray-400 dark:text-white">
-                <FaMoon className="text-xs" />
-              </span>
-            </div>
-          </button>
-
-        </div>
+        <button
+          onClick={handleThemeToggle}
+          aria-label="Toggle dark mode"
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/60 text-gold transition hover:bg-gold/10"
+        >
+          {isDark ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+        </button>
       </div>
     </header>
   );

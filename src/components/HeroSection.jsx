@@ -1,154 +1,146 @@
 import { FaChevronDown, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import Bunting from "./Bunting";
+import { Eyebrow } from "./Ornament";
+
+const skills = [
+  "Python",
+  "JavaScript",
+  "C++",
+  "React",
+  "AWS",
+  "Kubernetes",
+  "Docker",
+  "OpenCV",
+  "Linux",
+  "RabbitMQ",
+];
+
+const Ribbon = ({ children }) => (
+  <svg viewBox="0 0 240 44" className="w-60" aria-hidden="true">
+    <path d="M0 6 H240 L228 22 L240 38 H0 L12 22 Z" fill="var(--ribbon-bg)" />
+    <path d="M6 10 H232 L223 22 L232 34 H6 L15 22 Z" fill="none" stroke="#C9A24E" strokeWidth="0.8" />
+    <text
+      x="120"
+      y="26.5"
+      textAnchor="middle"
+      fontSize="10.5"
+      fontWeight="500"
+      letterSpacing="3.2"
+      fill="var(--ribbon-fg)"
+      className="font-sans uppercase"
+    >
+      {children}
+    </text>
+  </svg>
+);
 
 const HeroSection = () => {
-  const techStack = ["Python", "JavaScript", "React", "AWS", "Kubernetes", "Docker"];
-
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-light-gray dark:bg-dark-gray text-dark-gray dark:text-light-gray">
-      {/* Animated gradient blobs */}
+    <section className="relative min-h-screen w-full overflow-hidden bg-cream bg-hero-light text-navy dark:bg-navy dark:bg-hero-dark dark:text-cream">
+      {/* Toronto skyline, faded heavily into the background */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <img
+          src="/skyline-day.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[center_68%] opacity-[0.18] mix-blend-multiply [filter:sepia(0.45)_saturate(0.55)_contrast(1.05)] dark:hidden"
+        />
+        <img
+          src="/skyline-dusk.jpg"
+          alt=""
+          className="absolute inset-0 hidden h-full w-full object-cover object-[center_68%] opacity-[0.38] mix-blend-luminosity dark:block"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-cream from-0% via-cream/25 via-55% to-cream/70 to-100% dark:from-navy dark:via-navy/25 dark:to-navy/75" />
+      </div>
+      <div className="texture pointer-events-none absolute inset-0" />
+
+      {/* Drifting wash */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-accent-blue/30 dark:bg-accent-blue/20 blur-3xl animate-blob" />
-        <div className="absolute top-1/3 -right-32 w-[520px] h-[520px] rounded-full bg-harbour-blue/40 dark:bg-harbour-blue/30 blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-32 left-1/3 w-[420px] h-[420px] rounded-full bg-neutral-gray/60 dark:bg-accent-blue/10 blur-3xl animate-blob animation-delay-4000" />
+        <div className="absolute -top-24 right-[5%] h-[520px] w-[520px] rounded-full bg-sky/40 blur-3xl animate-drift dark:bg-ocean/30" />
       </div>
 
-      {/* Blueprint grid: minor + major */}
-      <div
-        className="absolute inset-0 opacity-[0.05] dark:opacity-[0.09]"
-        style={{
-          backgroundImage:
-            "linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)",
-          backgroundSize: "16px 16px",
-        }}
-      />
-      <div
-        className="absolute inset-0 opacity-[0.08] dark:opacity-[0.14]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#2c92d1 1px, transparent 1px), linear-gradient(90deg, #2c92d1 1px, transparent 1px)",
-          backgroundSize: "96px 96px",
-        }}
-      />
+      {/* Engraved double frame */}
+      <div className="pointer-events-none absolute inset-x-5 bottom-5 top-24 hidden border border-gold/60 md:block" />
+      <div className="pointer-events-none absolute inset-x-7 bottom-7 top-[6.5rem] hidden border border-gold/30 md:block" />
 
-      {/* Top ruler strip */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-3 z-[5] h-2"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(44,146,209,0.55) 1px, transparent 1px)",
-          backgroundSize: "32px 100%",
-        }}
-      />
-
-      {/* Corner brackets */}
-      <div className="pointer-events-none absolute inset-6 z-[5]">
-        <div className="absolute top-0 left-0 h-6 w-6 border-t-2 border-l-2 border-accent-blue/70" />
-        <div className="absolute top-0 right-0 h-6 w-6 border-t-2 border-r-2 border-accent-blue/70" />
-        <div className="absolute bottom-0 left-0 h-6 w-6 border-b-2 border-l-2 border-accent-blue/70" />
-        <div className="absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-accent-blue/70" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center gap-12 px-6 py-24 sm:px-10 md:px-20">
-        <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-20">
-          {/* Left: Text */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center gap-14 px-6 pb-24 pt-32 sm:px-10 md:px-20">
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-24">
+          {/* Text */}
           <div className="flex-1 text-center lg:text-left">
-            {/* Heading */}
-            <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-              Cameron{" "}
-              <span className="bg-gradient-to-r from-accent-blue via-harbour-blue to-accent-blue bg-clip-text text-transparent">
-                Bennett
-              </span>
-              <span className="text-accent-blue">.</span>
-            </h1>
-
-            {/* Subheading */}
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-dark-gray/70 dark:text-light-gray/70 sm:text-xl lg:mx-0">
-              Full-stack engineer building software and infrastructure with the mission of providing heavy industry with the data it's missing.
-            </p>
-
-            {/* Tech stack pills */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-              {techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="inline-flex items-center border border-dark-gray/15 bg-white/40 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider backdrop-blur-md transition hover:border-accent-blue/60 dark:border-white/15 dark:bg-white/5"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="flex justify-center lg:justify-start">
+              <Eyebrow>Toronto, Ontario</Eyebrow>
             </div>
 
-            {/* CTAs */}
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+            <h1 className="mt-5 font-serif text-6xl font-semibold leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
+              Cameron
+              <br />
+              <span className="bg-gradient-to-r from-ocean via-deep-blue to-navy bg-clip-text pr-2 italic text-transparent dark:from-sky dark:via-gold-light dark:to-sky">
+                Bennett
+              </span>
+            </h1>
+
+            <p className="mx-auto mt-7 max-w-lg text-base leading-relaxed text-navy/70 dark:text-cream/70 sm:text-lg lg:mx-0">
+              Full-stack engineer. I build the whole stack, from the servers on
+              site to the applications people use every day.
+            </p>
+
+            <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
               <a
                 href="#journey"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-dark-gray px-7 py-3.5 font-medium text-light-gray shadow-lg shadow-dark-gray/20 transition-all hover:scale-105 hover:shadow-xl dark:bg-light-gray dark:text-dark-gray dark:shadow-light-gray/10"
+                className="group inline-flex items-center gap-3 bg-btn-navy px-7 py-3 text-[11px] font-medium uppercase tracking-caps text-cream shadow-lg shadow-navy/25 ring-1 ring-gold/40 transition hover:-translate-y-0.5 hover:shadow-xl hover:ring-gold dark:bg-btn-cream dark:text-navy dark:shadow-black/30"
               >
-                View My Work
+                View my work
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="mailto:tony.misic@avo-inc.ca"
-                className="inline-flex items-center justify-center gap-2 rounded-full text-white border border-dark-gray/20 bg-white/30 px-7 py-3.5 font-medium backdrop-blur-md transition-all hover:scale-105 hover:bg-white/50 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10"
+                className="inline-flex items-center gap-2 border border-gold bg-gradient-to-r from-gold/0 via-gold/10 to-gold/0 px-7 py-3 text-[11px] font-medium uppercase tracking-caps text-navy transition hover:-translate-y-0.5 hover:from-gold/15 hover:via-gold/25 hover:to-gold/15 dark:text-cream"
               >
-                Get in Touch
+                Get in touch
               </a>
             </div>
 
-            {/* Socials */}
-            <div className="mt-8 flex items-center justify-center gap-5 text-xl text-dark-gray/60 dark:text-light-gray/60 lg:justify-start">
-              <a
-                href="https://github.com/cambennett-avo"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="transition text-white hover:scale-110 hover:text-accent-blue"
-              >
+            <div className="mt-8 flex items-center justify-center gap-6 text-lg text-navy/60 dark:text-cream/60 lg:justify-start">
+              <a href="https://github.com/cambennett-avo" target="_blank" rel="noreferrer" aria-label="GitHub" className="transition hover:text-gold">
                 <FaGithub />
               </a>
-              <a
-                href="https://ca.linkedin.com/in/cameron-bennett-b8339b204"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="transition hover:scale-110 text-white hover:text-accent-blue"
-              >
+              <a href="https://ca.linkedin.com/in/cameron-bennett-b8339b204" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition hover:text-gold">
                 <FaLinkedin />
               </a>
-              <a
-                href="mailto:tony.misic@avo-inc.ca"
-                aria-label="Email"
-                className="transition hover:scale-110 text-white hover:text-accent-blue"
-              >
+              <a href="mailto:tony.misic@avo-inc.ca" aria-label="Email" className="transition hover:text-gold">
                 <FaEnvelope />
               </a>
             </div>
           </div>
 
-          {/* Right: Headshot */}
-          <div className="relative flex-shrink-0">
-            {/* Glow ring */}
-            <div className="absolute inset-0 -m-4 rounded-full bg-gradient-to-tr from-accent-blue via-harbour-blue to-accent-blue opacity-60 blur-2xl" />
-
-            {/* Gradient border ring */}
-            <div className="relative rounded-full bg-gradient-to-tr from-accent-blue via-harbour-blue to-accent-blue p-1.5 shadow-2xl">
-              <div className="rounded-full bg-light-gray p-1 dark:bg-dark-gray">
-                <img
-                  src="/headshot.png"
-                  alt="Cameron Bennett"
-                  className="h-56 w-56 rounded-full object-cover sm:h-72 sm:w-72 md:h-80 md:w-80"
-                />
+          {/* Portrait in a brass-ringed crest with a ribbon beneath */}
+          <div className="relative flex flex-shrink-0 flex-col items-center">
+            <div className="absolute inset-0 -m-10 rounded-full bg-gradient-to-tr from-sky/70 via-gold/10 to-gold/40 blur-2xl dark:from-ocean/50 dark:to-gold/25" />
+            <div className="relative rounded-full bg-brass p-[3px] shadow-xl shadow-navy/20 dark:shadow-black/40">
+              <div className="rounded-full bg-cream p-2.5 dark:bg-navy">
+                <div className="rounded-full border border-gold/70 p-[3px]">
+                  <img
+                    src="/headshot.png"
+                    alt="Cameron Bennett"
+                    className="h-56 w-56 rounded-full object-cover sm:h-72 sm:w-72 md:h-80 md:w-80"
+                  />
+                </div>
               </div>
+            </div>
+            <div className="relative -mt-5">
+              <Ribbon>Computer Engineer</Ribbon>
             </div>
           </div>
         </div>
+
+        {/* Skills, flown as pennants */}
+        <div className="mx-auto w-full max-w-5xl">
+          <Bunting items={skills} />
+        </div>
       </div>
 
-      {/* Scroll indicator */}
       <a
-        href="#journey"
-        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-1 text-xs uppercase tracking-widest text-dark-gray/60 dark:text-light-gray/60"
+        href="#field"
+        className="absolute bottom-9 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-[10px] uppercase tracking-caps text-gold"
         aria-label="Scroll down"
       >
         <span>Scroll</span>

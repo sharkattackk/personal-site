@@ -13,20 +13,12 @@ function App() {
   };
 
   return (
-    <div id="home" className="scroll-smooth font-sans">
+    <div id="home" className="font-sans">
       <NavBar toggleDarkMode={toggleDarkMode} />
-      <div className="flex flex-col">
-        <HeroSection />
-        <div id="field">
-          <FieldGallery />
-        </div>
-        <div id="journey">
-          <TimelineSection />
-        </div>
-        <div id="about">
-          <AboutSection />
-        </div>
-      </div>
+      <HeroSection />
+      <FieldGallery />
+      <TimelineSection />
+      <AboutSection />
       <Footer />
     </div>
   )

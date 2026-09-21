@@ -1,10 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import {
-  FaGraduationCap,
-  FaBriefcase,
-  FaArrowRight,
-  FaArrowsAltH,
-} from "react-icons/fa";
+import { FaGraduationCap, FaBriefcase, FaArrowsAltH } from "react-icons/fa";
+import { Eyebrow, SectionRule } from "../Ornament";
 
 // --- Data (chronological) -----------------------------------------------
 // Fractional years: 0.33 = May, 0.67 = September.
@@ -111,48 +107,45 @@ const TimelineCard = ({ item }) => {
   const Icon = isWork ? FaBriefcase : FaGraduationCap;
   return (
     <div
-      className={`relative flex w-[230px] flex-shrink-0 select-none flex-col gap-2 border bg-white/40 p-4 backdrop-blur-md transition-all hover:-translate-y-0.5 dark:bg-white/5 ${
+      className={`relative flex w-[240px] flex-shrink-0 select-none flex-col gap-3 border bg-white/60 p-5 backdrop-blur-sm transition-all hover:-translate-y-0.5 dark:bg-white/[0.04] ${
         item.ongoing
-          ? "border-accent-blue shadow-[0_0_40px_rgba(44,146,209,0.55)] ring-1 ring-accent-blue/40 hover:shadow-[0_0_50px_rgba(44,146,209,0.7)]"
-          : isWork
-          ? "border-accent-blue/40 shadow-md hover:border-accent-blue/70 hover:shadow-xl"
-          : "border-harbour-blue/40 shadow-md hover:border-harbour-blue/70 hover:shadow-xl"
+          ? "border-gold shadow-[0_0_36px_rgba(201,162,78,0.35)]"
+          : "border-gold/40 shadow-sm hover:border-gold/80 hover:shadow-md"
       }`}
     >
-      {/* Type pill + live indicator */}
-      <div className="flex items-center justify-between gap-2">
-        <div className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-accent-blue">
+      {/* corner ticks */}
+      <span className="pointer-events-none absolute left-1.5 top-1.5 h-2 w-2 border-l border-t border-gold/70" />
+      <span className="pointer-events-none absolute right-1.5 top-1.5 h-2 w-2 border-r border-t border-gold/70" />
+      <span className="pointer-events-none absolute bottom-1.5 left-1.5 h-2 w-2 border-b border-l border-gold/70" />
+      <span className="pointer-events-none absolute bottom-1.5 right-1.5 h-2 w-2 border-b border-r border-gold/70" />
+
+      <div className="flex items-center justify-between">
+        <div className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-caps text-gold">
           <Icon className="text-[10px]" />
           <span>{isWork ? "Work" : "School"}</span>
         </div>
         {item.ongoing && (
-          <div className="inline-flex items-center gap-1 font-mono text-[9px] font-bold uppercase tracking-widest text-green-500">
+          <div className="inline-flex items-center gap-1.5 text-[9px] font-medium uppercase tracking-caps text-gold">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
             </span>
             <span>Current</span>
           </div>
         )}
       </div>
 
-      {/* Title + subtitle */}
       <div>
-        <h3 className="text-sm font-bold leading-tight tracking-tight">
-          {item.title}
-        </h3>
-        <p className="mt-0.5 text-xs font-medium text-dark-gray/70 dark:text-light-gray/70">
-          {item.subtitle}
-        </p>
+        <h3 className="font-serif text-lg font-medium leading-tight">{item.title}</h3>
+        <p className="mt-1 text-xs text-navy/70 dark:text-cream/70">{item.subtitle}</p>
       </div>
 
-      {/* Tech chips */}
       {item.tech && (
         <div className="flex flex-wrap gap-1">
           {item.tech.slice(0, 4).map((t) => (
             <span
               key={t}
-              className="border border-dark-gray/15 bg-white/50 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider dark:border-white/15 dark:bg-white/5"
+              className="border border-navy/15 px-1.5 py-0.5 text-[9px] uppercase tracking-wider text-navy/80 dark:border-cream/20 dark:text-cream/80"
             >
               {t}
             </span>
@@ -160,44 +153,35 @@ const TimelineCard = ({ item }) => {
         </div>
       )}
 
-      {/* Footer: period + location */}
-      <div className="mt-auto border-t border-dark-gray/10 pt-2 dark:border-white/10">
-        <div className="font-mono text-[10px] font-bold uppercase tracking-widest">
-          {item.period}
-        </div>
-        <div className="font-mono text-[9px] uppercase tracking-widest text-dark-gray/55 dark:text-light-gray/55">
-          {item.location}
-        </div>
+      <div className="mt-auto border-t border-gold/30 pt-2">
+        <div className="text-[10px] font-medium uppercase tracking-caps">{item.period}</div>
+        <div className="text-[10px] italic text-navy/55 dark:text-cream/55">{item.location}</div>
       </div>
     </div>
   );
 };
 
-// --- Separator ----------------------------------------------------------
+// --- Separators ---------------------------------------------------------
+
+const Diamond = () => <span className="text-[7px] text-gold">◆</span>;
 
 const Separator = ({ joined }) => (
-  <div className="flex flex-shrink-0 items-center gap-1 px-2 font-mono text-accent-blue">
-    {joined ? (
-      <>
-        <span className="text-sm tracking-widest opacity-60">···</span>
-        <FaArrowRight className="text-xs" />
-        <span className="text-sm tracking-widest opacity-60">···</span>
-      </>
-    ) : (
-      <FaArrowRight className="text-xs opacity-70" />
-    )}
+  <div className="flex flex-shrink-0 items-center gap-1.5 px-3">
+    <span className={`h-px bg-gold/50 ${joined ? "w-3" : "w-6"}`} />
+    <Diamond />
+    <span className={`h-px bg-gold/50 ${joined ? "w-3" : "w-6"}`} />
   </div>
 );
 
 const PresentSeparator = () => (
-  <div className="flex flex-shrink-0 items-center gap-3 px-8 font-mono text-accent-blue">
-    <span className="text-sm tracking-widest opacity-40">·····</span>
-    <FaArrowRight className="text-sm" />
-    <span className="border border-accent-blue/60 bg-accent-blue/10 px-2 py-1 text-[9px] font-bold uppercase tracking-widest">
+  <div className="flex flex-shrink-0 items-center gap-3 px-6">
+    <span className="h-px w-8 bg-gold/50" />
+    <Diamond />
+    <span className="border border-gold/60 px-2.5 py-1 text-[9px] font-medium uppercase tracking-caps text-gold">
       Now
     </span>
-    <FaArrowRight className="text-sm" />
-    <span className="text-sm tracking-widest opacity-40">·····</span>
+    <Diamond />
+    <span className="h-px w-8 bg-gold/50" />
   </div>
 );
 
@@ -213,7 +197,6 @@ const TimelineSection = () => {
     const el = scrollRef.current;
     if (!el) return;
 
-    // Double-rAF so the scroll runs after the row has been measured.
     const scrollToEnd = () => {
       el.scrollLeft = el.scrollWidth;
     };
@@ -252,71 +235,50 @@ const TimelineSection = () => {
     drag.current.down = false;
     setIsDragging(false);
     const el = scrollRef.current;
-    if (el && el.hasPointerCapture(e.pointerId))
-      el.releasePointerCapture(e.pointerId);
+    if (el && el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId);
   };
 
   return (
     <section
       id="journey"
-      className="relative overflow-hidden bg-light-gray px-6 py-24 text-dark-gray transition-colors duration-300 dark:bg-dark-gray dark:text-light-gray md:px-20"
+      className="relative overflow-hidden bg-cream px-6 py-24 text-navy dark:bg-navy dark:text-cream md:px-20"
     >
-      {/* Background accents */}
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-[500px] w-[500px] rounded-full bg-accent-blue/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[500px] w-[500px] rounded-full bg-harbour-blue/10 blur-3xl" />
+      <div className="texture pointer-events-none absolute inset-0" />
+      <div className="pointer-events-none absolute -right-40 top-0 h-[480px] w-[480px] rounded-full bg-sky/50 blur-3xl dark:bg-ocean/25" />
+      <div className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] rounded-full bg-gold/15 blur-3xl dark:bg-gold/10" />
 
-      {/* Faint blueprint grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04] dark:opacity-[0.08]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#2c92d1 1px, transparent 1px), linear-gradient(90deg, #2c92d1 1px, transparent 1px)",
-          backgroundSize: "96px 96px",
-        }}
-      />
-
-      {/* Header */}
       <div className="relative mx-auto mb-12 max-w-7xl">
+        <SectionRule className="mb-14" />
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="text-sm font-medium uppercase tracking-widest text-accent-blue">
-              Journey
-            </p>
-            <h2 className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">
-              Where I've{" "}
-              <span className="bg-gradient-to-r from-accent-blue to-harbour-blue bg-clip-text text-transparent">
-                been
-              </span>
+            <Eyebrow>Journey</Eyebrow>
+            <h2 className="mt-4 font-serif text-4xl font-medium tracking-tight md:text-5xl">
+              Where I&apos;ve <span className="italic text-ocean dark:text-sky">been</span>
             </h2>
-            <p className="mt-4 max-w-xl text-dark-gray/70 dark:text-light-gray/70">
-              School and work, in order. Drag the row to scroll back through
-              the years.
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/65 dark:text-cream/65">
+              School and work, in order. Drag the row to scroll back through the years.
             </p>
           </div>
 
-          {/* Legend */}
-          <div className="flex items-center gap-4 font-mono text-[10px] uppercase tracking-widest">
+          <div className="flex items-center gap-6 text-[10px] font-medium uppercase tracking-caps text-navy/70 dark:text-cream/70">
             <div className="inline-flex items-center gap-2">
-              <span className="h-2.5 w-2.5 border border-harbour-blue/70 bg-harbour-blue/20" />
+              <FaGraduationCap className="text-gold" />
               <span>School</span>
             </div>
             <div className="inline-flex items-center gap-2">
-              <span className="h-2.5 w-2.5 border border-accent-blue/70 bg-accent-blue/20" />
+              <FaBriefcase className="text-gold" />
               <span>Work</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Draggable row — sits on the page, no container box */}
       <div className="relative -mx-6 md:-mx-20">
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-light-gray to-transparent dark:from-dark-gray md:w-20" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-12 bg-gradient-to-l from-light-gray to-transparent dark:from-dark-gray md:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-12 bg-gradient-to-r from-cream to-transparent dark:from-navy md:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-12 bg-gradient-to-l from-cream to-transparent dark:from-navy md:w-20" />
 
-        {/* Drag hint */}
         {showHint && (
-          <div className="pointer-events-none absolute left-8 top-2 z-30 inline-flex items-center gap-2 border border-accent-blue/40 bg-white/70 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-accent-blue shadow-lg backdrop-blur-md dark:bg-white/10 md:left-24">
+          <div className="pointer-events-none absolute left-8 top-2 z-30 inline-flex items-center gap-2 border border-gold/60 bg-cream/90 px-3 py-1.5 text-[10px] font-medium uppercase tracking-caps text-gold shadow-md dark:bg-navy/90 md:left-24">
             <FaArrowsAltH />
             <span>Drag to scroll</span>
           </div>
@@ -334,12 +296,12 @@ const TimelineSection = () => {
               e.stopPropagation();
             }
           }}
-          className={`hide-scrollbar overflow-x-auto px-6 py-4 md:px-20 ${
+          className={`hide-scrollbar overflow-x-auto px-6 py-6 md:px-20 ${
             isDragging ? "cursor-grabbing" : "cursor-grab"
           }`}
           style={{ touchAction: "pan-y" }}
         >
-          <div className="flex items-stretch gap-0">
+          <div className="flex items-stretch">
             {items.map((item, i) => (
               <Fragment key={`${item.title}-${item.start}`}>
                 <TimelineCard item={item} />
@@ -351,8 +313,7 @@ const TimelineSection = () => {
                   ))}
               </Fragment>
             ))}
-            {/* Trailing spacer — guaranteed part of scrollWidth so the
-                LIVE card lands fully clear of the right fade. */}
+            {/* Trailing spacer so the current card clears the right-hand fade */}
             <div className="w-48 flex-shrink-0 md:w-[28rem]" aria-hidden="true" />
           </div>
         </div>
