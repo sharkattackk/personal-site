@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync-cv": "node -e \"const f=require('fs');f.copyFileSync('../index.html','public/cv.html');f.copyFileSync('../Cameron_Bennett_Resume.pdf','public/Cameron_Bennett_Resume.pdf')\""
   },
   "dependencies": {
     "@fontsource/poppins": "^5.3.0",

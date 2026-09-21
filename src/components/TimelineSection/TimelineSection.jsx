@@ -15,9 +15,9 @@ const MAY = 4 / 12;
 const items = [
   {
     type: "education",
-    title: "High School",
-    subtitle: "AP",
-    location: "Ontario, Canada",
+    title: "Crescent School",
+    subtitle: "High School",
+    location: "Toronto, ON",
     period: "2016 — 2020",
     start: 2016,
     end: 2020 + MAY,
@@ -123,7 +123,7 @@ const TimelineCard = ({ item }) => {
       <div className="flex items-center justify-between gap-2">
         <div className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-accent-blue">
           <Icon className="text-[10px]" />
-          <span>{isWork ? "WORK //" : "SCHOOL //"}</span>
+          <span>{isWork ? "Work" : "School"}</span>
         </div>
         {item.ongoing && (
           <div className="inline-flex items-center gap-1 font-mono text-[9px] font-bold uppercase tracking-widest text-green-500">
@@ -131,7 +131,7 @@ const TimelineCard = ({ item }) => {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
             </span>
-            <span>LIVE</span>
+            <span>Current</span>
           </div>
         )}
       </div>
@@ -194,7 +194,7 @@ const PresentSeparator = () => (
     <span className="text-sm tracking-widest opacity-40">·····</span>
     <FaArrowRight className="text-sm" />
     <span className="border border-accent-blue/60 bg-accent-blue/10 px-2 py-1 text-[9px] font-bold uppercase tracking-widest">
-      NOW //
+      Now
     </span>
     <FaArrowRight className="text-sm" />
     <span className="text-sm tracking-widest opacity-40">·····</span>
@@ -279,8 +279,8 @@ const TimelineSection = () => {
       <div className="relative mx-auto mb-12 max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-accent-blue">
-              JOURNEY //
+            <p className="text-sm font-medium uppercase tracking-widest text-accent-blue">
+              Journey
             </p>
             <h2 className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">
               Where I've{" "}
@@ -289,8 +289,8 @@ const TimelineSection = () => {
               </span>
             </h2>
             <p className="mt-4 max-w-xl text-dark-gray/70 dark:text-light-gray/70">
-              School and work in sequence — summers fill the gaps. Drag the row
-              to pan back through the years.
+              School and work, in order. Drag the row to scroll back through
+              the years.
             </p>
           </div>
 
@@ -318,7 +318,7 @@ const TimelineSection = () => {
         {showHint && (
           <div className="pointer-events-none absolute left-8 top-2 z-30 inline-flex items-center gap-2 border border-accent-blue/40 bg-white/70 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-accent-blue shadow-lg backdrop-blur-md dark:bg-white/10 md:left-24">
             <FaArrowsAltH />
-            <span>Drag to pan history</span>
+            <span>Drag to scroll</span>
           </div>
         )}
 

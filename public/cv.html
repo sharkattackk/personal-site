@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cameron Bennett — Computer Engineer</title>
+  <meta name="description" content="Resume of Cameron Bennett, Computer Engineer based in Toronto, ON.">
+
+  <style>
+    /* ==========================================================
+       DESIGN TOKENS — change these to restyle the whole page
+       ========================================================== */
+    :root {
+      /* Colours */
+      --color-bg:        #ffffff;
+      --color-surface:   #f6f7f9;
+      --color-text:      #1a1a1a;
+      --color-muted:     #5c6470;
+      --color-accent:    #1f4e79;
+      --color-rule:      #d9dde3;
+
+      /* Typography */
+      --font-body:       "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-heading:    var(--font-body);
+      --font-size-base:  14px;
+      --font-size-small: 12.5px;
+      --font-size-name:  28px;
+      --font-size-h2:    11.5px;
+      --font-size-h3:    15px;
+      --line-height:     1.45;
+
+      /* Layout */
+      --page-max-width:  800px;
+      --page-padding:    48px;
+      --section-gap:     20px;
+      --entry-gap:       12px;
+    }
+
+    /* ==========================================================
+       BASE
+       ========================================================== */
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    ul { margin: 0; padding-left: 1.2em; }
+    li { margin: 1px 0; }
+    p  { margin: 0; }
+
+    /* ==========================================================
+       PAGE CONTAINER
+       ========================================================== */
+    .resume {
+      max-width: var(--page-max-width);
+      margin: 40px auto;
+      padding: var(--page-padding);
+      background: var(--color-bg);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ==========================================================
+       HEADER
+       ========================================================== */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      padding-bottom: 14px;
+      margin-bottom: var(--section-gap);
+      border-bottom: 2px solid var(--color-accent);
+    }
+
+    .header__name {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-name);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 2px;
+    }
+
+    .header__title {
+      font-size: var(--font-size-base);
+      color: var(--color-muted);
+      font-weight: 500;
+    }
+
+    .header__contact {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: right;
+      font-size: var(--font-size-small);
+      color: var(--color-muted);
+    }
+    .header__contact li { margin: 0; }
+
+    /* ==========================================================
+       SECTIONS
+       ========================================================== */
+    .section { margin-bottom: var(--section-gap); }
+
+    .section__title {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-h2);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin: 0 0 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--color-rule);
+    }
+
+    /* ==========================================================
+       ENTRIES (experience / education)
+       ========================================================== */
+    .entry { margin-bottom: var(--entry-gap); }
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px 16px;
+    }
+
+    .entry__org {
+      font-family: var(--font-heading);
+      font-size: var(--font-size-h3);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .entry__role {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .entry__meta {
+      font-size: var(--font-size-small);
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+
+    .entry__location { color: var(--color-muted); font-weight: 400; }
+
+    /* ==========================================================
+       SKILLS
+       ========================================================== */
+    .skills {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 4px 16px;
+    }
+    .skills dt { font-weight: 600; }
+    .skills dd { margin: 0; }
+
+    /* ==========================================================
+       SIDE-BY-SIDE SMALL SECTIONS (hobbies / languages)
+       ========================================================== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    /* ==========================================================
+       RESPONSIVE
+       ========================================================== */
+    @media (max-width: 640px) {
+      :root { --page-padding: 24px; }
+
+      .resume { margin: 0; box-shadow: none; }
+
+      .header { flex-direction: column; align-items: flex-start; }
+      .header__contact { text-align: left; }
+
+      .skills { grid-template-columns: 1fr; gap: 2px; }
+      .skills dd { margin-bottom: 8px; }
+
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* ==========================================================
+       PRINT
+       ========================================================== */
+    @media print {
+      body { background: #fff; }
+      .resume {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      a { color: inherit; }
+      @page { margin: 15mm 18mm; }
+
+      /* Keep headings with their content and avoid splitting entries */
+      .section__title { break-after: avoid; }
+      .entry, .grid-2 { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="resume">
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+      <div>
+        <h1 class="header__name">Cameron Bennett</h1>
+        <p class="header__title">Computer Engineer</p>
+      </div>
+      <ul class="header__contact">
+        <li>Toronto, ON</li>
+        <li><a href="tel:+16478084484">(647) 808-4484</a></li>
+        <li><a href="mailto:cambennett72@gmail.com">cambennett72@gmail.com</a></li>
+      </ul>
+    </header>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="section" id="experience">
+      <h2 class="section__title">Experience</h2>
+
+      <article class="entry">
+        <div class="entry__head">
+          <h3 class="entry__org">Autonomous Vehicle Organization <span class="entry__location">· Toronto, ON</span></h3>
+          <span class="entry__role">Computer Vision Engineer</span>
+        </div>
+        <p class="entry__meta">May 2024 – Present</p>
+        <ul>
+          <li>Owned the full product end to end, from on-premises data collection at heavy-industry sites through cloud storage to the customer-facing web application.</li>
+          <li>Built and maintained on-premises Kubernetes clusters running containerized Python services that produce and process site data in real time.</li>
+          <li>Developed the front end and back end of the cloud platform customers use to explore that data.</li>
+          <li>Designed and built a mobile app that transmits over UHF and VHF radio, enabling data collection in underground mines with no network connectivity.</li>
+          <li>Led client meetings to define requirements, then scoped and delivered the resulting features directly.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry__head">
+          <h3 class="entry__org">Woodgrove Solutions <span class="entry__location">· Toronto, ON</span></h3>
+          <span class="entry__role">Computer Engineer</span>
+        </div>
+        <p class="entry__meta">May 2022 – September 2023</p>
+        <ul>
+          <li>Designed, trained, and deployed computer vision systems for mineral processing on mining projects worldwide.</li>
+          <li>Feedback from these systems reduced errors and waste in Woodgrove's frothing technology.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+    <section class="section" id="education">
+      <h2 class="section__title">Education</h2>
+
+      <article class="entry">
+        <div class="entry__head">
+          <h3 class="entry__org">Queen's University <span class="entry__location">· Kingston, ON</span></h3>
+          <span class="entry__role">BASc, Computer Engineering</span>
+        </div>
+        <p class="entry__meta">September 2020 – May 2024</p>
+        <ul>
+          <li>Capstone project, an AI interview-practice tool, was incorporated as a business and acquired paying customers.</li>
+          <li>Team Lead, Queen's Biomechatronics team.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry__head">
+          <h3 class="entry__org">Crescent School <span class="entry__location">· Toronto, ON</span></h3>
+          <span class="entry__role">Ontario Secondary School Diploma</span>
+        </div>
+        <p class="entry__meta">September 2014 – May 2020 · Advanced Placement curriculum, graduated with Honours</p>
+      </article>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section" id="skills">
+      <h2 class="section__title">Skills</h2>
+      <dl class="skills">
+        <dt>Programming</dt>
+        <dd>Python, JavaScript, C++, React</dd>
+
+        <dt>Computer Vision & AI</dt>
+        <dd>OpenCV, YOLO, LLM-assisted development (Claude Code, Codex)</dd>
+
+        <dt>AWS</dt>
+        <dd>Lambda, DynamoDB, Cognito, Amplify, RDS, EC2, S3, CodePipeline, API Gateway</dd>
+
+        <dt>Infrastructure</dt>
+        <dd>Linux, Docker, Kubernetes, RabbitMQ</dd>
+
+        <dt>Systems</dt>
+        <dd>Signal processing, radio frequency systems</dd>
+      </dl>
+    </section>
+
+    <!-- ================= HOBBIES / LANGUAGES ================= -->
+    <!--
+      Certificates section removed until there is real content. To restore,
+      add a third <section> here and change .grid-2 to a three-column grid.
+    -->
+    <div class="grid-2">
+      <section class="section" id="hobbies">
+        <h2 class="section__title">Hobbies</h2>
+        <p>Squash, Muay Thai, Sailing, Water Taxi Captain</p>
+      </section>
+
+      <section class="section" id="languages">
+        <h2 class="section__title">Languages</h2>
+        <p>English, French</p>
+      </section>
+    </div>
+
+  </main>
+</body>
+</html>

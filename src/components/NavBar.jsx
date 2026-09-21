@@ -16,6 +16,15 @@ const NavBar = ({ toggleDarkMode }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const downloadPdf = () => {
+    const a = document.createElement("a");
+    a.href = "/Cameron_Bennett_Resume.pdf";
+    a.download = "Cameron_Bennett_Resume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
   const handleThemeToggle = () => {
     setIsDark(!isDark);
     toggleDarkMode(); // calls parent function
@@ -43,8 +52,19 @@ const NavBar = ({ toggleDarkMode }) => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-10 text-base tracking-wide text-black dark:text-white">
-          {[{name: "Journey", route: "#journey" }, {name: "About", route: "#about" }].map((item) => (
-            <a key={item.name} href={item.route} className="text-dark-gray hover:text-black dark:text-light-gray dark:hover:text-white hover:opacity-70 transition cursor-pointer">
+          {[
+            { name: "Journey", route: "#journey" },
+            { name: "About", route: "#about" },
+            { name: "CV", route: "/cv.html", external: true, download: true },
+          ].map((item) => (
+            <a
+              key={item.name}
+              href={item.route}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noreferrer" : undefined}
+              onClick={item.download ? downloadPdf : undefined}
+              className="text-dark-gray hover:text-black dark:text-light-gray dark:hover:text-white hover:opacity-70 transition cursor-pointer"
+            >
               {item.name}
             </a>
           ))}

@@ -1,26 +1,8 @@
 
 const photos = [
-  {
-    src: "/mining.jpeg",
-    site: "MINE.001",
-    label: "On-site visit",
-    year: 2024,
-    placeholderNote: "Drop a photo at /public/mining.jpeg",
-  },
-  {
-    src: "/deployment.png",
-    site: "MINE.002",
-    label: "Underground Deployment",
-    year: 2024,
-    placeholderNote: "Drop a photo at /public/mining-2.jpg",
-  },
-  {
-    src: "/lesson.png",
-    site: "MINE.003",
-    label: "Development session",
-    year: 2023,
-    placeholderNote: "Drop a photo at /public/mining-3.jpg",
-  },
+  { src: "/mining.jpeg", label: "On-site visit", year: 2024 },
+  { src: "/deployment.png", label: "Underground deployment", year: 2024 },
+  { src: "/lesson.png", label: "Development session", year: 2023 },
 ];
 
 const CornerBrackets = () => (
@@ -49,14 +31,14 @@ const FieldGallery = () => {
       />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* Header — industrial */}
+        {/* Header */}
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-accent-blue">
-              FIELD REPORTS //
+            <p className="text-sm font-medium uppercase tracking-widest text-accent-blue">
+              In the field
             </p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-              I've Seen first hand the data gaps in{" "}
+              I've seen first-hand the data gaps in{" "}
               <span className="bg-gradient-to-r from-accent-blue to-harbour-blue bg-clip-text text-transparent">
                 heavy industry
               </span>
@@ -66,7 +48,7 @@ const FieldGallery = () => {
 
         {/* Gallery row */}
         <div className="grid gap-4 sm:grid-cols-3">
-          {photos.map((photo, i) => (
+          {photos.map((photo) => (
             <figure
               key={photo.src}
               className="group relative flex flex-col gap-2"
@@ -82,28 +64,13 @@ const FieldGallery = () => {
                   }}
                 />
 
-                {/* Placeholder fallback */}
-                {/* <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-6 text-center text-dark-gray/60 dark:text-light-gray/60">
-                  <FaImage className="text-3xl text-accent-blue/60" />
-                  <p className="font-mono text-[10px] uppercase tracking-widest">
-                    {photo.placeholderNote}
-                  </p>
-                </div> */}
-
-                {/* CAD-style frame markers */}
                 <CornerBrackets />
-
-                {/* Top-left index tag */}
-                <div className="absolute top-3 left-3 z-10 border border-accent-blue/60 bg-dark-gray/70 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-light-gray backdrop-blur-sm">
-                  {String(i + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
-                </div>
               </div>
 
-              {/* Caption strip */}
-              <figcaption className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-dark-gray/70 dark:text-light-gray/70">
-                <span className="text-accent-blue">{photo.site}</span>
+              {/* Caption */}
+              <figcaption className="flex items-center justify-between text-xs text-dark-gray/70 dark:text-light-gray/70">
                 <span>{photo.label}</span>
-                <span>FY-{photo.year}</span>
+                <span>{photo.year}</span>
               </figcaption>
             </figure>
           ))}
