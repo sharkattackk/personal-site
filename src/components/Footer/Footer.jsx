@@ -11,7 +11,7 @@ const navLinks = [
 const socials = [
   { label: "GitHub", handle: "@cambennett-avo", href: "https://github.com/cambennett-avo", icon: FaGithub },
   { label: "LinkedIn", handle: "/in/cameron-bennett", href: "https://ca.linkedin.com/in/cameron-bennett-b8339b204", icon: FaLinkedin },
-  { label: "Email", handle: "cambennett72@gmail.com", href: "mailto:tony.misic@avo-inc.ca", icon: FaEnvelope },
+  { label: "Email", handle: "cambennett72@gmail.com", href: "mailto:cambennett72@gmail.com", icon: FaEnvelope },
 ];
 
 const downloadPdf = () => {

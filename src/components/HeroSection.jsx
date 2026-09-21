@@ -92,7 +92,7 @@ const HeroSection = () => {
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </a>
               <a
-                href="mailto:tony.misic@avo-inc.ca"
+                href="mailto:cambennett72@gmail.com"
                 className="inline-flex items-center gap-2 border border-gold bg-gradient-to-r from-gold/0 via-gold/10 to-gold/0 px-7 py-3 text-[11px] font-medium uppercase tracking-caps text-navy transition hover:-translate-y-0.5 hover:from-gold/15 hover:via-gold/25 hover:to-gold/15 dark:text-cream"
               >
                 Get in touch
@@ -106,7 +106,7 @@ const HeroSection = () => {
               <a href="https://ca.linkedin.com/in/cameron-bennett-b8339b204" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition hover:text-gold">
                 <FaLinkedin />
               </a>
-              <a href="mailto:tony.misic@avo-inc.ca" aria-label="Email" className="transition hover:text-gold">
+              <a href="mailto:cambennett72@gmail.com" aria-label="Email" className="transition hover:text-gold">
                 <FaEnvelope />
               </a>
             </div>
