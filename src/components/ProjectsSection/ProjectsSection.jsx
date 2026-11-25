@@ -5,9 +5,9 @@ const projects = [
     name: "Hawkeye",
     tagline: "Drone surveillance system",
     paragraphs: [
-      "Hawkeye uses drone photos and computer vision to track boat traffic in Toronto's harbour. It also watches for property theft on land.",
+      "Hawkeye uses drone photos and computer vision to track boat traffic in and out of a client's marina.",
       "It's in use under contract with the Toronto Port Authority, a federal agency. I designed the whole system myself, and I'm the one who keeps it running.",
-      "When a new drone photo comes in, Hawkeye works out which reference shot it matches and lines the two up using SIFT features. A CLIP-based classifier then checks each marina slip, and the results show up on a timeline in the dashboard. If the model gets something wrong, I can label the photo and retrain it from the same dashboard.",
+      "When a new drone photo comes in, Hawkeye works out which reference shot it matches and lines the two up using SIFT features. A CLIP-based classifier then checks each marina slip, and the results show up on a timeline in the dashboard. If the model gets something wrong, the user can label the photo and retrain it from the same dashboard, offering constant model improvement.",
     ],
     stack: ["Python", "PyTorch", "OpenCV", "CLIP", "Kubernetes", "AWS Lambda", "MySQL", "React"],
     image: {
@@ -26,7 +26,7 @@ const ProjectCard = ({ project, index }) => {
     <article className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
       <div>
         <div className="flex items-center gap-4">
-          <span className="font-serif text-3xl italic text-gold">{numeral}</span>
+          <span className="font-serif text-3xl text-gold">{numeral}</span>
           <Eyebrow>{project.tagline}</Eyebrow>
         </div>
         <h3 className="mt-4 font-serif text-4xl font-medium tracking-tight md:text-5xl">
@@ -84,12 +84,9 @@ const ProjectsSection = () => {
           <div>
             <Eyebrow>Projects</Eyebrow>
             <h2 className="mt-4 font-serif text-4xl font-medium tracking-tight md:text-5xl">
-              Projects I <span className="italic text-gold-light">run myself</span>
+              Projects I <span className="text-gold-light">run myself</span>
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-cream/60">
-            I&apos;m the only engineer on these.
-          </p>
         </div>
 
         <div className="space-y-24">

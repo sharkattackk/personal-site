@@ -23,7 +23,7 @@ const FieldGallery = () => {
             <Eyebrow>On location</Eyebrow>
             <h2 className="mt-4 font-serif text-4xl font-medium tracking-tight md:text-5xl">
               A few of the places the{" "}
-              <span className="italic text-gold-light">work has taken me</span>
+              <span className="text-gold-light">work has taken me</span>
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-cream/60">
@@ -49,7 +49,7 @@ const FieldGallery = () => {
                 <span className="text-[11px] font-medium uppercase tracking-caps text-cream/70">
                   {photo.label}
                 </span>
-                <span className="font-serif text-lg italic text-gold">{photo.year}</span>
+                <span className="font-serif text-lg text-gold">{photo.year}</span>
               </figcaption>
             </figure>
           ))}

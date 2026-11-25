@@ -155,7 +155,7 @@ const TimelineCard = ({ item }) => {
 
       <div className="mt-auto border-t border-gold/30 pt-2">
         <div className="text-[10px] font-medium uppercase tracking-caps">{item.period}</div>
-        <div className="text-[10px] italic text-navy/55 dark:text-cream/55">{item.location}</div>
+        <div className="text-[10px] text-navy/55 dark:text-cream/55">{item.location}</div>
       </div>
     </div>
   );
@@ -253,7 +253,7 @@ const TimelineSection = () => {
           <div>
             <Eyebrow>Journey</Eyebrow>
             <h2 className="mt-4 font-serif text-4xl font-medium tracking-tight md:text-5xl">
-              Where I&apos;ve <span className="italic text-ocean dark:text-sky">been</span>
+              Where I&apos;ve <span className="text-ocean dark:text-sky">been</span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/65 dark:text-cream/65">
               Everything since high school, oldest on the left. Drag the row to scroll back.

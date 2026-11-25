@@ -36,7 +36,7 @@ const HobbyRow = ({ hobby, index }) => {
     >
       <div>
         <div className="flex items-center gap-4">
-          <span className="font-serif text-3xl italic text-gold">{numeral}</span>
+          <span className="font-serif text-3xl text-gold">{numeral}</span>
           <Eyebrow>{hobby.eyebrow}</Eyebrow>
         </div>
         <h3 className="mt-4 font-serif text-3xl font-medium tracking-tight md:text-4xl">
@@ -76,7 +76,7 @@ const AboutSection = () => {
         <div className="mb-20 text-center">
           <Eyebrow center>About me</Eyebrow>
           <h2 className="mt-4 font-serif text-4xl font-medium tracking-tight md:text-5xl">
-            Off the <span className="italic text-ocean dark:text-sky">keyboard</span>
+            Off the <span className="text-ocean dark:text-sky">keyboard</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-navy/65 dark:text-cream/65">
             What I get up to outside of work.
