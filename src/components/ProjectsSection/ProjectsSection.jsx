@@ -4,34 +4,26 @@ const projects = [
   {
     name: "Hawkeye",
     tagline: "Drone surveillance system",
-    client: "Toronto Port Authority",
-    role: "Sole engineer",
-    status: "In production",
     paragraphs: [
       "Hawkeye uses drone photos and computer vision to track boat traffic in Toronto's harbour. It also watches for property theft on land.",
       "It's in use under contract with the Toronto Port Authority, a federal agency. I designed the whole system myself, and I'm the one who keeps it running.",
       "When a new drone photo comes in, Hawkeye works out which reference shot it matches and lines the two up using SIFT features. A CLIP-based classifier then checks each marina slip, and the results show up on a timeline in the dashboard. If the model gets something wrong, I can label the photo and retrain it from the same dashboard.",
     ],
     stack: ["Python", "PyTorch", "OpenCV", "CLIP", "Kubernetes", "AWS Lambda", "MySQL", "React"],
+    image: {
+      src: "/hawkeye.png",
+      alt: "The Hawkeye dashboard: marina occupancy at a glance, a map built from drone photos, and every slip marked as holding a boat or empty",
+      width: 1009,
+      height: 955,
+    },
   },
 ];
-
-const Corner = ({ className }) => (
-  <span className={`pointer-events-none absolute h-2.5 w-2.5 border-gold/70 ${className}`} />
-);
-
-const Detail = ({ label, children }) => (
-  <div className="border-b border-gold/20 pb-4 last:border-b-0 last:pb-0">
-    <dt className="text-[10px] font-medium uppercase tracking-caps text-gold">{label}</dt>
-    <dd className="mt-1.5 text-sm text-cream/85">{children}</dd>
-  </div>
-);
 
 const ProjectCard = ({ project, index }) => {
   const numeral = ["I", "II", "III", "IV", "V"][index] ?? index + 1;
 
   return (
-    <article className="grid gap-12 md:grid-cols-[1.6fr_1fr] md:gap-16">
+    <article className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
       <div>
         <div className="flex items-center gap-4">
           <span className="font-serif text-3xl italic text-gold">{numeral}</span>
@@ -45,40 +37,33 @@ const ProjectCard = ({ project, index }) => {
             <p key={text.slice(0, 24)}>{text}</p>
           ))}
         </div>
+        <div className="mt-8 flex flex-wrap gap-1.5">
+          {project.stack.map((t) => (
+            <span
+              key={t}
+              className="border border-cream/20 px-2 py-0.5 text-[10px] uppercase tracking-wider text-cream/80"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <aside className="relative self-start border border-gold/40 bg-white/[0.04] p-7 backdrop-blur-sm">
-        <Corner className="left-1.5 top-1.5 border-l border-t" />
-        <Corner className="right-1.5 top-1.5 border-r border-t" />
-        <Corner className="bottom-1.5 left-1.5 border-b border-l" />
-        <Corner className="bottom-1.5 right-1.5 border-b border-r" />
-
-        <dl className="flex flex-col gap-4">
-          <Detail label="Client">{project.client}</Detail>
-          <Detail label="Role">{project.role}</Detail>
-          <Detail label="Status">
-            <span className="inline-flex items-center gap-2">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
-              </span>
-              {project.status}
-            </span>
-          </Detail>
-          <Detail label="Built with">
-            <span className="mt-1 flex flex-wrap gap-1.5">
-              {project.stack.map((t) => (
-                <span
-                  key={t}
-                  className="border border-cream/20 px-2 py-0.5 text-[10px] uppercase tracking-wider text-cream/80"
-                >
-                  {t}
-                </span>
-              ))}
-            </span>
-          </Detail>
-        </dl>
-      </aside>
+      {project.image && (
+        <figure className="border border-gold/40 bg-white/[0.04] p-2 shadow-2xl shadow-black/30 sm:p-3">
+          {/* Opens full size, since it's hard to read on a phone */}
+          <a href={project.image.src} target="_blank" rel="noreferrer" className="block">
+            <img
+              src={project.image.src}
+              alt={project.image.alt}
+              width={project.image.width}
+              height={project.image.height}
+              loading="lazy"
+              className="block h-auto w-full border border-gold/20"
+            />
+          </a>
+        </figure>
+      )}
     </article>
   );
 };
