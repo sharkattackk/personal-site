@@ -5,21 +5,21 @@ const hobbies = [
     eyebrow: "On the court",
     title: "Squash",
     description:
-      "Squash has been my outlet since high school — fast feet, sharp angles, and the kind of focus where nothing else exists for an hour. I play in local leagues and chase a better backhand every week.",
+      "I've played squash since high school. These days I'm in a local league, and I'm still working on my backhand.",
     image: "/squash.jpg",
   },
   {
     eyebrow: "On the water",
     title: "Sailing",
     description:
-      "There's nothing quite like reading the wind on Lake Ontario. Sailing taught me patience, planning, and how to react when conditions change faster than you do.",
+      "I sail on Lake Ontario whenever I can. Reading the wind well is harder than it looks, which is a big part of why I keep going out.",
     image: "/vxone.webp",
   },
   {
     eyebrow: "At the dock",
     title: "Toronto Harbour Water Taxis",
     description:
-      "Although technically professional, I consider working for the Tdot water Taxi on the weekends a hobby. Aside from enjoying the outdoors and meeting the coolest people, I love the challenges I face when I need to gently place the 2 and a half ton vessel bow-on against a solid wall with only 2 inches to spare between two boats at center island.",
+      "It's technically a job, but I count driving for Tdot Water Taxi on weekends as a hobby. I get to spend the day outside and meet the coolest people. My favourite part is docking at Centre Island, where I have to gently set a two-and-a-half-ton boat bow-on against a solid wall, squeezed between two other boats with two inches to spare.",
     image: "/watertaxi.png",
   },
 ];
@@ -79,8 +79,7 @@ const AboutSection = () => {
             Off the <span className="italic text-ocean dark:text-sky">keyboard</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-navy/65 dark:text-cream/65">
-            When I&apos;m not shipping code, you&apos;ll find me on a court, on the
-            water, or somewhere in Toronto Harbour.
+            What I get up to outside of work.
           </p>
         </div>
 

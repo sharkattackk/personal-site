@@ -77,8 +77,10 @@ const HeroSection = () => {
             </h1>
 
             <p className="mx-auto mt-7 max-w-lg text-base leading-relaxed text-navy/70 dark:text-cream/70 sm:text-lg lg:mx-0">
-              Full-stack engineer. I build the whole stack, from the servers on
-              site to the applications people use every day.
+              I&apos;m a computer vision engineer at Avo. Most of my code runs on
+              servers at industrial sites, and some of it has to work in
+              underground mines with barely any signal. I also build the web
+              platform our clients use to look through everything we collect.
             </p>
 
             <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">

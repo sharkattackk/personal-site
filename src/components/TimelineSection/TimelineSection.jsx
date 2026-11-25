@@ -256,7 +256,7 @@ const TimelineSection = () => {
               Where I&apos;ve <span className="italic text-ocean dark:text-sky">been</span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/65 dark:text-cream/65">
-              School and work, in order. Drag the row to scroll back through the years.
+              Everything since high school, oldest on the left. Drag the row to scroll back.
             </p>
           </div>
 

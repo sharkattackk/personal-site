@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer'
 import TimelineSection from './components/TimelineSection/TimelineSection'
 import FieldGallery from './components/FieldGallery/FieldGallery'
 import AboutSection from './components/AboutSection/AboutSection'
+import ProjectsSection from './components/ProjectsSection/ProjectsSection'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <HeroSection />
       <FieldGallery />
       <TimelineSection />
+      <ProjectsSection />
       <AboutSection />
       <Footer />
     </div>

@@ -4,6 +4,7 @@ import Monogram from "../Monogram";
 const navLinks = [
   { label: "On location", href: "#field" },
   { label: "Journey", href: "#journey" },
+  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "CV", href: "/cv.html", external: true, download: true },
 ];
@@ -49,7 +50,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-cream/60">
-              Full-stack engineer. Toronto, Ontario.
+              Currently at Avo, based in Toronto.
             </p>
           </div>
 

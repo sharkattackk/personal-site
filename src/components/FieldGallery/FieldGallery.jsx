@@ -27,8 +27,8 @@ const FieldGallery = () => {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-cream/60">
-            Site visits, deployments, and the occasional whiteboard session
-            along the way.
+            I go out to client sites to install our systems myself, sometimes
+            underground.
           </p>
         </div>
 

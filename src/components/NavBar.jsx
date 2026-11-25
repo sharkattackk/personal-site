@@ -14,6 +14,7 @@ const downloadPdf = () => {
 const links = [
   { name: "On location", route: "#field" },
   { name: "Journey", route: "#journey" },
+  { name: "Projects", route: "#projects" },
   { name: "About", route: "#about" },
   { name: "CV", route: "/cv.html", external: true, download: true },
 ];
